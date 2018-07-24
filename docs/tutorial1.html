@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Opinionated tutorial demonstrating R reproducible workflow using workflowR.</title>
+    <meta charset="utf-8">
+    <link href="site_libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="my-theme.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Opinionated tutorial demonstrating R reproducible workflow using workflowR.
+
+---
+
+
+# Opinion # 1 - R is the best
+  * Code based research output
+  * no random mouse clicking
+  * open source
+
+  * but dense
+
+---
+
+
+
+# Example Chart
+
+
+```r
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy))
+```
+
+&lt;img src="tutorial1_files/figure-html/unnamed-chunk-2-1.png" width="672" /&gt;
+---
+
+
+# Example Chart (#2)
+
+
+```r
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy, color=class))
+```
+
+&lt;img src="tutorial1_files/figure-html/unnamed-chunk-3-1.png" width="672" /&gt;
+---
+
+# Opinion # 2 - Tidyverse 'dialect' of R
+  * R has 3 different code styles;  \$, formula, and tidyverse
+    - [ see comparision here ](https://github.com/rstudio/cheatsheets/raw/master/syntax.pdf)  
+  * tidyverse is easy to read, write and *maintain*
+
+---
+
+# Tidyverse example
+
+```r
+  mpg %&gt;%
+    filter( cyl &lt; 8 ) %&gt;%
+    group_by( class ) %&gt;%
+    summarise( mean( hwy )) %&gt;%
+    kable()
+```
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; class &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; mean(hwy) &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; compact &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 28.29787 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; midsize &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 27.46154 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; minivan &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 22.36364 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; pickup &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 18.53846 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; subcompact &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 29.23333 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; suv &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 20.25000 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+---
+# Opinion # 3 - Workflowr
+  * [ Workflowr Presentation from UseR 2018 conference ](2018-07-11-user.pdf) 
+
+---
+
+# Resources
+  * [ Workflowr Presentation from UseR 2018 conference ](2018-07-11-user.pdf) 
+  * [Rstudio installation](https://www.rstudio.com/products/rstudio/download/)
+  * [R installation](https://cran.rstudio.com/)
+  * [R for data science book](http://r4ds.had.co.nz/)
+    - Tidyverse book with exercises
+  * [Markdown documentation](https://daringfireball.net/projects/markdown/syntax)
+  * [Markdown quick reference](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+  * [RMarkdown cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf)
+  * [Data Transformation cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf)
+  * [Data visualisation cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf)
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create();
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
