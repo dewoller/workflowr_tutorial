@@ -1,0 +1,16 @@
+
+.remark-slide-content{ 
+  
+/*  background-color:#222;
+  font-family: 'Fira Sans', 'Yanone Kaffeesatz';
+  color: #fff; */
+  font-size: 220%;    /* Regular text */
+}
+
+.remark-code, .remark-inline-code { font-family: 'Source Code Pro', 'Lucida Console', Monaco, monospace;
+  font-size: 90%;
+}
+
+.remark-slide-content h1 { font-size:130% }
+.remark-slide-content h2 { font-size:130% }
+.remark-slide-content h3 { font-size:130% }
