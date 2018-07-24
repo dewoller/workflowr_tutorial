@@ -1,0 +1,73 @@
+---
+title: "Opinionated tutorial demonstrating R reproducible workflow using workflowR."
+output:
+  xaringan::moon_reader:
+    css: ["default","my-theme.css"]
+---
+
+# Opinion # 1 - R is the best
+  * Code based research output
+  * no random mouse clicking
+  * open source
+
+  * but dense
+
+---
+
+```{r results='hide', message=FALSE, warning=FALSE, echo=FALSE}
+
+library(kableExtra)
+library(tidyverse, warn.conflicts=FALSE, verbose=FALSE, quietly=TRUE)
+
+```
+
+# Example Chart
+
+```{r, warning=FALSE}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy))
+```
+---
+
+
+# Example Chart (#2)
+
+```{r, warning=FALSE}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy, color=class))
+```
+---
+
+# Opinion # 2 - Tidyverse 'dialect' of R
+  * R has 3 different code styles;  \$, formula, and tidyverse
+    - [ see comparision here ](https://github.com/rstudio/cheatsheets/raw/master/syntax.pdf)  
+  * tidyverse is easy to read, write and *maintain*
+
+---
+
+# Tidyverse example
+```{r, results='asis', warning=FALSE}
+  mpg %>%
+    filter( cyl < 8 ) %>%
+    group_by( class ) %>%
+    summarise( mean( hwy )) %>%
+    kable()
+
+```
+---
+# Opinion # 3 - Workflowr
+  * [ Workflowr Presentation from UseR 2018 conference ](2018-07-11-user.pdf) 
+
+---
+
+# Resources
+  * [ Workflowr Presentation from UseR 2018 conference ](2018-07-11-user.pdf) 
+  * [Rstudio installation](https://www.rstudio.com/products/rstudio/download/)
+  * [R installation](https://cran.rstudio.com/)
+  * [R for data science book](http://r4ds.had.co.nz/)
+    - Tidyverse book with exercises
+  * [Markdown documentation](https://daringfireball.net/projects/markdown/syntax)
+  * [Markdown quick reference](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+  * [RMarkdown cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf)
+  * [Data Transformation cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf)
+  * [Data visualisation cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf)
